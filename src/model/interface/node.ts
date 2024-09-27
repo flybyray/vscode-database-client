@@ -299,7 +299,7 @@ export abstract class Node extends vscode.TreeItem implements CopyAble {
         let command: string;
         if (this.dbType == DatabaseType.MYSQL) {
             this.checkCommand('mysql');
-            command = `mysql -u ${this.user} -p${this.password} -h ${this.host} -P ${this.port} \n`;
+            command = `mysql --defaults-group-suffix=${this.name} -h ${this.host} \n`;
         } else if (this.dbType == DatabaseType.PG) {
             this.checkCommand('psql');
             let prefix = platform() == 'win32' ? 'set' : 'export';
